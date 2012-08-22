@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import copy, re
 
-import requests
 from pyquery import PyQuery as pq
 
 from bulva.parsers import MTParser
