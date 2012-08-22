@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import unittest, datetime
 
-from parsers import oko
+from bulva.parsers import oko
 
 class TestOko(unittest.TestCase):
     def test_parse_date(self):

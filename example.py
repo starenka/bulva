@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pprint, datetime
 
-from parsers.oko import Oko
+from bulva.parsers.oko import Oko
 
 #all
 pprint.pprint(Oko().get_items())
