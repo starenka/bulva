@@ -13,7 +13,7 @@ pprint.pprint(all)
 now = datetime.datetime.now()
 pprint.pprint(filter(lambda x: x['start'].date() == now.date(), all))
 
-#tomorow
+#tomorrow
 pprint.pprint(filter(lambda x: x['start'].date() == (now + datetime.timedelta(days=1)).date(), all))
 
 #get data from all parsers
