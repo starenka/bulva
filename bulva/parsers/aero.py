@@ -21,7 +21,6 @@ class Parser(MTParser):
             one = pq(one)
             if one.hasClass('day'):
                 date = self._parse_date(one.text())
-                print date
             else:
                 item = copy.copy(self.item)
                 cycle, time, movie, price, reservation, ef = map(lambda x: pq(x), one.find('td'))
