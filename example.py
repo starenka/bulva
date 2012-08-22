@@ -19,11 +19,10 @@ pprint.pprint(filter(lambda x: x['start'].date() == (now + datetime.timedelta(da
 #get data from all parsers
 from bulva import parsers
 
+
 all_parsers = dict()
 for one in parsers.__all__:
     mod = importlib.import_module('bulva.parsers.%s' % one)
     all_parsers[one] = mod.Parser().get_items()
 
 pprint.pprint(all_parsers)
-
-

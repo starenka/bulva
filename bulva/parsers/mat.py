@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import logging, datetime, copy, re
+import datetime, copy, re
 
-import requests
 from pyquery import PyQuery as pq
 
 from bulva.parsers import MTParser
@@ -12,18 +11,15 @@ now = datetime.datetime.now()
 
 class Parser(MTParser):
     URL = 'http://www.mat.cz/matclub/cz/kino/mesicni-program'
-    RE_NUM = re.compile(r'^.*?([\d]+).*$')
 
     def _parse_date(self, date_str):
         day, month = ''.join(date_str.split(' ')[1:]).split('.')[:-1]
         return datetime.datetime(year=now.year, month=int(month), day=int(day))
 
     def get_items(self):
-        data = requests.get(self.URL)
         items = []
-
+        data = self._get_data(self.URL)
         if not data:
-            logging.error('No data returned from %s' % self.URL)
             return items
 
         data = pq(data.content)
