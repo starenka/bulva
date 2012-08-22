@@ -12,7 +12,6 @@ For usage see example.py
 
 ###TODO
 
-- Aero
 - Svetozor
 - Evald
 - Atlas
