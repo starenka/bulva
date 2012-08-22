@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pprint, datetime, importlib
 
-#single parser
+#query single parser
 from bulva.parsers.oko import Parser
 
 #all
@@ -16,8 +16,7 @@ pprint.pprint(filter(lambda x: x['start'].date() == now.date(), all))
 #tomorow
 pprint.pprint(filter(lambda x: x['start'].date() == (now + datetime.timedelta(days=1)).date(), all))
 
-
-#all parsers
+#get data from all parsers
 from bulva import parsers
 
 all_parsers = dict()

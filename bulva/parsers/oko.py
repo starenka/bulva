@@ -28,11 +28,6 @@ class Parser(MTParser):
 
         return date
 
-    def _mk_start_date(self, hm_str, date=None):
-        date = date if date else now
-        hour, minute = hm_str.split(':')
-        return datetime.datetime(year=date.year, month=date.month, day=date.day, hour=int(hour), minute=int(minute))
-
     def get_items(self):
         data = requests.get(self.URL)
         items = []
