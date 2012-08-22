@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import locale, logging, datetime
+import locale, logging, datetime, copy
 
 import requests
 from pyquery import PyQuery as pq
 
+from bulva.parsers import MTParser
+
 locale.setlocale(locale.LC_ALL, ("cs_CZ"))
 now = datetime.datetime.now()
 
-class Oko(object):
+
+class Parser(MTParser):
     URL = 'http://www.biooko.net/cz/program/'
     URL_BASE = 'http://www.biooko.net'
 
@@ -44,8 +47,7 @@ class Oko(object):
             if one.hasClass('day'):
                 date = self._parse_date(one.text())
             else:
-                item = dict(cycle=None, price=None, title=None, title_orig=None, url=None, reservation_url=None,
-                    start=None)
+                item = copy.copy(self.item)
                 item['cycle'], tr, movie = one.find('td.cycle a').attr('title'), pq(
                     one.find('td.time_reservation')), pq(
                     one.find('span.movie_name_block strong a'))

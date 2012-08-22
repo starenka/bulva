@@ -6,7 +6,7 @@ from bulva.parsers import oko
 
 class TestOko(unittest.TestCase):
     def test_parse_date(self):
-        o = oko.Oko()
+        o = oko.Parser()
         oko.now = datetime.datetime(year=2012, month=8, day=24)
         self.assertEqual(o._parse_date('den, 24. srpna'),
             datetime.datetime(year=2012, month=8, day=24))
