@@ -7,7 +7,7 @@ import requests
 __all__ = ['oko',
            'mat',
            'aero',
-           #'svetozor',
+           'svetozor',
            # 'evald',
            # 'atlas',
 ]
