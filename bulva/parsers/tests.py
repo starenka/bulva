@@ -9,15 +9,17 @@ class TestMTParser(unittest.TestCase):
     def test_parse_date(self):
         parser = MTParser()
         parsers.now = datetime.datetime(year=2012, month=8, day=24)
-        self.assertEqual(parser._parse_date('den, 24. srpna'),
+        self.assertEqual(parser._parse_date('jueves, 24. srpna'),
             datetime.datetime(year=2012, month=8, day=24))
-        self.assertEqual(parser._parse_date('den, 24. Srpna'),
+        self.assertEqual(parser._parse_date('viernes, 24. Srpna'),
+            datetime.datetime(year=2012, month=8, day=24))
+        self.assertEqual(parser._parse_date('monday 24. Srpna'),
             datetime.datetime(year=2012, month=8, day=24))
 
         parsers.now = datetime.datetime(year=2012, month=8, day=24)
-        self.assertEqual(parser._parse_date('den, 1. Října'),
+        self.assertEqual(parser._parse_date('utorok, 1. Října'),
             datetime.datetime(year=2012, month=9, day=1))
 
         parsers.now = datetime.datetime(year=2012, month=12, day=24)
-        self.assertEqual(parser._parse_date('den, 2. ledna'),
+        self.assertEqual(parser._parse_date('nedele, 2. ledna'),
             datetime.datetime(year=2013, month=1, day=2))

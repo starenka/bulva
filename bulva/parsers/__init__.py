@@ -30,6 +30,7 @@ class MTParser(object):
     )
 
     RE_NUM = re.compile(r'^.*?([\d]+).*$')
+    RE_DATE = re.compile(r'(?P<day>\d+)[.\s]+\s(?P<month>\w+)', re.UNICODE)
 
     def _get_data(self, url):
         data = requests.get(url)
@@ -43,7 +44,7 @@ class MTParser(object):
         return datetime.datetime(year=date.year, month=date.month, day=date.day, hour=int(hour), minute=int(minute))
 
     def _parse_date(self, date_str):
-        day, month_abb = date_str.split(', ')[1].split('. ')
+        day, month_abb = re.search(self.RE_DATE, date_str).groups()
 
         if now.strftime('%b') == month_abb.lower()[:3]:
             date = datetime.datetime(year=now.year, month=now.month, day=int(day))

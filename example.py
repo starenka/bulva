@@ -3,7 +3,7 @@
 import pprint, datetime, importlib
 
 #query single parser
-from bulva.parsers.oko import Parser
+from bulva.parsers.mat import Parser
 
 #all
 all = Parser().get_items()
